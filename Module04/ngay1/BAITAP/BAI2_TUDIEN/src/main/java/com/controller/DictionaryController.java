@@ -21,7 +21,7 @@ public class DictionaryController {
         Map<String, String> searchList = new HashMap<>();
         searchList.put("yes", "no");
         searchList.put("no", "yes");
-        String mess = "không tìm thấy";
+        String mess = "Found not find";
         String result= searchList.get(words);
         model.addAttribute("words",words);
         if (result !=null){

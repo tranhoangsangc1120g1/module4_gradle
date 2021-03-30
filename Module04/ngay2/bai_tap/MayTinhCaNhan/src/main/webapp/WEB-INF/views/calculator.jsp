@@ -13,17 +13,18 @@
 </head>
 <body>
 <form action="/calculate" method="post">
-<input type="text" name="a">
-<select name="character" >
-    <option value="+">addition</option>
-    <option value="-">subtraction</option>
-    <option value="*">multiplication</option>
-    <option value="/">division</option>
-</select>
-<input type="text" name="b">
-<input type="submit" value="OK">
-<p>Result : ${c}</p>
-    <p>${mess}</p>
+    <input type="text" name="a" value="${a}">
+    <select name="character">
+        <option value="+">addition</option>
+        <option value="-">subtraction</option>
+        <option value="*">multiplication</option>
+        <option value="/">division</option>
+    </select>
+    <input type="text" name="b" value="${b}">
+    <input type="submit" value="OK">
+    <c:if test="${c!=null}">
+        <p>Result : ${c}</p>
+    </c:if>
 
 </form>
 </body>

@@ -14,11 +14,11 @@ public class Example {
     }
 
     @PostMapping("/chuyendoi")
-    public String chuyenDoiTien(@RequestParam double uv, @RequestParam double vu, Model model) {
-        double result1 = 23000 * uv;
-        double result2 = vu / 23000;
-        model.addAttribute("vnd", result1);
-        model.addAttribute("usd", result2);
+    public String convert(@RequestParam double uTv, @RequestParam double vTu, Model model) {
+        double usdToVnd = 23000 * uTv;
+        double vndToUsd = vTu / 23000;
+        model.addAttribute("vnd", usdToVnd);
+        model.addAttribute("usd", vndToUsd);
         return "result";
     }
 }
