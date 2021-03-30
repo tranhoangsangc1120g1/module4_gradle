@@ -10,22 +10,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class ExplainController {
+public class DictionaryController {
     @GetMapping("/")
     public String input() {
         return "words";
     }
 
     @PostMapping("/search")
-    public String translation(@RequestParam String vocabulary, Model model) {
+    public String translation(@RequestParam String words, Model model) {
         Map<String, String> searchList = new HashMap<>();
         searchList.put("yes", "no");
         searchList.put("no", "yes");
         String mess = "không tìm thấy";
-        String result= searchList.get(vocabulary);
-        model.addAttribute("vocabulary",vocabulary);
+        String result= searchList.get(words);
+        model.addAttribute("words",words);
         if (result !=null){
-            model.addAttribute("result",result);
+            model.addAttribute("resultwords",result);
             return "result";
         }else {
             model.addAttribute("mess",mess);
