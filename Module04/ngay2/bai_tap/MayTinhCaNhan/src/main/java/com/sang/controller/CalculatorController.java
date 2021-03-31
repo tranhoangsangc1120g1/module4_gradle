@@ -28,7 +28,7 @@ public class CalculatorController {
             try{
                 model.addAttribute("c", iCalculatorService.returnResult(a,b,character));
             }catch (ArithmeticException e){
-                model.addAttribute("c",e.getMessage());
+                model.addAttribute("error",e.getMessage());
             }
 
          return "calculator";
