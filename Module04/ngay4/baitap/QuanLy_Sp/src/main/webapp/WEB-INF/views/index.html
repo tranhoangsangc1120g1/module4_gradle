@@ -23,12 +23,12 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${productList}">
-        <td th:text="${row.getId()()}"></td>
-        <td th:text="${row.getName()()}"></td>
-        <td th:text="${row.getManufactory()()}"></td>
-        <td><a th:href="@{/product/{id}/edit(id=${row.getId()})}">edit</a></td>
-        <td><a th:href="@{/product/{id}/delete(id=${row.getId()})}">delete</a></td>
-        <td><a th:href="@{/product/{id}/view(id=${row.getId()})}">view</a></td>
+        <td th:text="${row.getId()}"></td>
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getManufactory()}"></td>
+        <td><a th:href="@{/products/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/products/{id}/delete(id=${row.getId()})}">delete</a></td>
+        <td><a th:href="@{/products/{id}/view(id=${row.getId()})}">view</a></td>
     </tr>
     </tbody>
 </table>
