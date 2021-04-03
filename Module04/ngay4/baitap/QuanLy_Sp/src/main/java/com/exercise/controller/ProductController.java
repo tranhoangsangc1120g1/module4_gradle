@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -28,9 +29,10 @@ public class ProductController {
         return "create";
     }
     @PostMapping("/products/save")
-    public String save(Product product) {
+    public String save(Product product ,RedirectAttributes redirect) {
         product.setId((int)(Math.random() * 10000));
         productService.save(product);
+        redirect.addFlashAttribute("success", "ADD product successfully!");
         return "redirect:/";
     }
     @GetMapping("/products/{id}/edit")
@@ -39,13 +41,14 @@ public class ProductController {
         return "edit";
     }
     @PostMapping("/products/update")
-    public String update(Product product) {
+    public String update(Product product , RedirectAttributes redirect) {
+        redirect.addFlashAttribute("success", "Edit product successfully!");
         productService.update(product.getId(), product);
         return "redirect:/";
     }
     @PostMapping("/products/delete")
-    public String delete(Product product, RedirectAttributes redirect) {
-        productService.remove(product.getId());
+    public String delete(@RequestParam int id, RedirectAttributes redirect) {
+        productService.remove(id);
         redirect.addFlashAttribute("success", "Removed product successfully!");
         return "redirect:/";
     }
@@ -54,5 +57,4 @@ public class ProductController {
         model.addAttribute("product", productService.findById(id));
         return "view";
     }
-
 }

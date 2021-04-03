@@ -13,9 +13,9 @@
 <table id = "products">
     <thead>
     <tr>
-        <th>Name</th>
         <th>ID</th>
-        <th>Manufactory</th>
+        <th>Name</th>
+        <th>Manufacture</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
@@ -27,11 +27,15 @@
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getManufactory()}"></td>
         <td><a th:href="@{/products/{id}/edit(id=${row.getId()})}">edit</a></td>
-        <td><a th:href="@{/products/{id}/delete(id=${row.getId()})}">delete</a></td>
+        <td><button type="submit" data-toggle="modal" data-target="#exampleModalScrollable" th:onclick="|getProductID('${row.id}')|">Delete</button></td>
         <td><a th:href="@{/products/{id}/view(id=${row.getId()})}">view</a></td>
     </tr>
     </tbody>
 </table>
+
+<p th:if="${success}" th:text="${success}"></p>
 <footer th:replace="/layout :: footer"></footer>
+<div th:insert="~{/layout::deletemodal}"></div>
+<div th:insert="~{layout::script}"></div>
 </body>
 </html>
