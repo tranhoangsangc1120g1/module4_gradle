@@ -46,9 +46,9 @@ public class ProductController {
     @GetMapping("/edit-product/{id}")
     public ModelAndView showEditForm(@PathVariable Long id) {
         Product product = productService.findById(id);
-            ModelAndView modelAndView = new ModelAndView("edit");
-            modelAndView.addObject("product", product);
-            return modelAndView;
+        ModelAndView modelAndView = new ModelAndView("edit");
+        modelAndView.addObject("product", product);
+        return modelAndView;
     }
 
     @PostMapping("/edit-product")

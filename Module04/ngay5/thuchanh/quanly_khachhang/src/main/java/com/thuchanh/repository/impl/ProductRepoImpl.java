@@ -46,7 +46,7 @@ public class ProductRepoImpl implements IProductRepo {
     @Override
     public void remove(Long id) {
         Product product = findById(id);
-        if (product.getId() != null){
+        if (product.getId() != null) {
             em.remove(product);
         }
     }

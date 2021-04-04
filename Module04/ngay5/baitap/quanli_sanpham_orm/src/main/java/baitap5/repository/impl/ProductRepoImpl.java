@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.*;
 import java.util.List;
 
-@Transactional
 @Repository
 public class ProductRepoImpl implements IProductRepo {
 //    @PersistenceContext
@@ -43,7 +42,7 @@ public class ProductRepoImpl implements IProductRepo {
 
     @Override
     public void save(Product model) {
-        EntityTransaction entityTransaction=BaseRepository.entityManager.getTransaction();
+        EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
         entityTransaction.begin();
         BaseRepository.entityManager.merge(model);
         entityTransaction.commit();
@@ -52,8 +51,11 @@ public class ProductRepoImpl implements IProductRepo {
     @Override
     public void remove(Long id) {
         Product product = findById(id);
-        if (product.getId() != null){
+        if (product.getId() != null) {
+            EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
+            entityTransaction.begin();
             BaseRepository.entityManager.remove(product);
+            entityTransaction.commit();
         }
     }
 }

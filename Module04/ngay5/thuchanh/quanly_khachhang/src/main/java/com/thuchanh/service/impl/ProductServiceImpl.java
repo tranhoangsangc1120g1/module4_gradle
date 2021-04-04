@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class ProductServiceImpl implements IProductRepo {
     @Autowired
     private IProductRepo productRepo;
+
     @Override
     public List<Product> findAll() {
         return productRepo.findAll();

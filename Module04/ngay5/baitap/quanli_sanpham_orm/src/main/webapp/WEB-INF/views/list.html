@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head"></head><head>
+<head th:replace="/layout :: head"></head>
+<head>
 <body>
 <a href="/create-product">Create new product</a>
 <h1>Product</h1>
@@ -18,8 +19,11 @@
             <td th:text="${product.name}"></td>
             <td th:text="${product.manufacture}"></td>
             <td><a th:href="@{/edit-product/{id}(id=${product.id})}">Edit</a></td>
-            <td><button type="submit" data-toggle="modal" data-target="#exampleModalScrollable"
-                        th:onclick="|getProductID('${product.id}')|">Delete</button></td>
+            <td>
+                <button type="submit" data-toggle="modal" data-target="#exampleModalScrollable"
+                        th:onclick="|getProductID('${product.id}')|">Delete
+                </button>
+            </td>
         </tr>
     </th:block>
 </table>
