@@ -10,7 +10,7 @@
     </a>
 </p>
 
-<table id = "products">
+<table id="products">
     <thead>
     <tr>
         <th>ID</th>
@@ -27,7 +27,11 @@
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getManufactory()}"></td>
         <td><a th:href="@{/products/{id}/edit(id=${row.getId()})}">edit</a></td>
-        <td><button type="submit" data-toggle="modal" data-target="#exampleModalScrollable" th:onclick="|getProductID('${row.id}')|">Delete</button></td>
+        <td>
+            <button type="submit" data-toggle="modal" data-target="#exampleModalScrollable"
+                    th:onclick="|getProductID('${row.id}')|">Delete
+            </button>
+        </td>
         <td><a th:href="@{/products/{id}/view(id=${row.getId()})}">view</a></td>
     </tr>
     </tbody>

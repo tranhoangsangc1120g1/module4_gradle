@@ -12,6 +12,7 @@ import java.util.List;
 public class CustomerServiceImp implements ICustomerService {
     @Autowired
     ICustomerRepo customerRepo;
+
     @Override
     public List<Customer> findAll() {
         return customerRepo.findAll();
@@ -29,7 +30,7 @@ public class CustomerServiceImp implements ICustomerService {
 
     @Override
     public void update(int id, Customer customer) {
-        customerRepo.update(id,customer);
+        customerRepo.update(id, customer);
     }
 
     @Override
