@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+<form th:action="@{/create_blog}" method="post" th:object="${blog}">
+    <table class="table table-hover">
+        <thead></thead>
+        <tbody>
+        <tr>
+            <th>Title</th>
+            <td>
+                <input type="text" class="form-control" th:field="*{title}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>
+                <input type="text" class="form-control" th:field="*{category}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td>
+                <textarea th:field="*{content}" required></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th>Post Day</th>
+            <td>
+                <input type="date" th:field="*{postDay}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>
+                <input type="file" th:field="*{image}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Author</th>
+            <td>
+                <input type="text" th:field="*{author}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>
+                <input type="text" th:field="*{description}" required>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" type="submit">Create</button>
+</form>
+
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>
