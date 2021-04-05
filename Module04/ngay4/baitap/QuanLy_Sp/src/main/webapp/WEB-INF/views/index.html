@@ -23,9 +23,9 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${productList}">
-        <td th:text="${row.getId()}"></td>
-        <td th:text="${row.getName()}"></td>
-        <td th:text="${row.getManufactory()}"></td>
+        <td th:text="${row.id}"></td>
+        <td th:text="${row.name}"></td>
+        <td th:text="${row.manufacture}"></td>
         <td><a th:href="@{/products/{id}/edit(id=${row.getId()})}">edit</a></td>
         <td>
             <button type="submit" data-toggle="modal" data-target="#exampleModalScrollable"

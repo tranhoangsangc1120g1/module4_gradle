@@ -3,12 +3,12 @@ package com.exercise.model;
 public class Product {
     private int id;
     private String name;
-    private String manufactory;
+    private String manufacture;
 
-    public Product(int id, String name, String manufactory) {
+    public Product(int id, String name, String manufacture) {
         this.id = id;
         this.name = name;
-        this.manufactory = manufactory;
+        this.manufacture = manufacture;
     }
 
     public Product() {
@@ -30,11 +30,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getManufactory() {
-        return manufactory;
+    public String getManufacture() {
+        return manufacture;
     }
 
-    public void setManufactory(String manufactory) {
-        this.manufactory = manufactory;
+    public void setManufacture(String manufactur) {
+        this.manufacture = manufacture;
     }
 }
