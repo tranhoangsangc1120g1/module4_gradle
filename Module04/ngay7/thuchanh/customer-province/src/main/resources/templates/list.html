@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Customer List</h3>
+<p>
+    <a th:href="@{customer/create}">Add new customer</a>
+</p>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Customer ID</td>
+        <td>FirstName</td>
+        <td>LastName</td>
+        <td>Province</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer, rowStat : ${customers}">
+        <td th:text="${customer.id}"></td>
+        <td><a th:href="@{customer/view(id=${customer.id})}" th:text="${customer.firstName}"></a></td>
+        <td th:text="${customer.lastName}"></td>
+        <td th:text="${customer.province.name}"></td>
+        <td>
+            <a th:href="@{customer/{id}/edit(id=${customer.id})}">
+                <button type="button" class="btn btn-danger">Edit</button>
+            </a>
+            <a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete"
+                        th:onclick="|setIdToDeleteForm('${customer.id}')|">Delete</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+    <a th:href="@{'/'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure to delete this customer?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form th:action="@{/customer/delete}" method="post" id="idForm">
+    <input type="hidden" name="id" id="idCustomer">
+</form>
+
+<footer th:replace="/layout :: footer"></footer>
+<script>
+    function setIdToDeleteForm(id) {
+        //id này chính là id của phần tử input trong form delete
+        document.getElementById("idCustomer").value = id;
+    }
+    function submitForm() {
+        document.getElementById("idForm").submit();
+    }
+</script>
+
+</body>
+</html>
