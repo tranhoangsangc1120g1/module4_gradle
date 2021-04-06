@@ -1,7 +1,6 @@
 package com.example.baitap6.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity(name = "blog")
 @Table
@@ -12,7 +11,10 @@ public class Blog {
     private String title;
     private String category;
     private String content;
-    private Date postDay;
+
+    @Column(columnDefinition = "date")
+    private String postDay;
+
     private String image;
     private String author;
     private String description;
@@ -52,11 +54,11 @@ public class Blog {
         this.content = content;
     }
 
-    public Date getPostDay() {
+    public String getPostDay() {
         return postDay;
     }
 
-    public void setPostDay(Date postDay) {
+    public void setPostDay(String postDay) {
         this.postDay = postDay;
     }
 

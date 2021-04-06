@@ -1,5 +1,6 @@
 package com.example.baitap6.service.impl;
 
+import com.example.baitap6.common.Util;
 import com.example.baitap6.model.Blog;
 import com.example.baitap6.reposity.IBlogRepo;
 import com.example.baitap6.service.IBlogService;
@@ -24,6 +25,9 @@ public class BlogServiceimpl implements IBlogService {
 
     @Override
     public void save(Blog blog) {
+        if (blog.getId() == null){
+            blog.setPostDay(Util.getCurrentDay());
+        }
         iBlogRepo.save(blog);
     }
 

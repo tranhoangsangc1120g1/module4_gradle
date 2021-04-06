@@ -37,13 +37,13 @@
             <tr>
                 <th>Post Day</th>
                 <td>
-                    <input type="date" th:field="*{postDay}" required>
+                    <span th:text="${blog.postDay}" required/>
                 </td>
             </tr>
             <tr>
                 <th>Image</th>
                 <td>
-                    <input type="file" th:text="*{image}" th:field="*{image}" required>
+                    <input type="file" th:text="*{image}" th:field="*{image}" >
                 </td>
             </tr>
             <tr>
