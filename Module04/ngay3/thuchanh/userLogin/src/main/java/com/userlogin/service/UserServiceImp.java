@@ -8,7 +8,8 @@ import com.userlogin.repository.UserRepoImp;
 import java.util.List;
 
 public class UserServiceImp implements IUserService {
-    IUserRepoImp userRepoImp =new UserRepoImp();
+    IUserRepoImp userRepoImp = new UserRepoImp();
+
     @Override
     public User checkLogin(Login login) {
         return userRepoImp.checkLogin(login);

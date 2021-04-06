@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Submitted Employee Information</h2>
-<table >
+<table>
     <tr>
         <td>Name :</td>
         <td>${name}</td>

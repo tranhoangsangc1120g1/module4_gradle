@@ -12,8 +12,10 @@
 </head>
 <body>
 <form action="/chuyendoi" method="post">
-<h1>USD => VND : <input type="number" name="uTv" > <button type="submit">Submit</button></h1>
-<h1>VND=> USD : <input type="number" name="vTu" ></h1>
+    <h1>USD => VND : <input type="number" name="uTv">
+        <button type="submit">Submit</button>
+    </h1>
+    <h1>VND=> USD : <input type="number" name="vTu"></h1>
 </form>
 </body>
 </html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6ca186ce-cffc-4e5d-9078-503ba3e4d463" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ngay1/BAITAP/BAI1_CHUYENDOITIEN/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ngay1/BAITAP/BAI1_CHUYENDOITIEN/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay1/BAITAP/BAI1_CHUYENDOITIEN/src/main/webapp/WEB-INF/views/example.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay1/BAITAP/BAI1_CHUYENDOITIEN/src/main/webapp/WEB-INF/views/example.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay1/BAITAP/BAI2_TUDIEN/src/main/java/com/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay1/BAITAP/BAI2_TUDIEN/src/main/java/com/controller/DictionaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay1/THUCHANH/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay1/THUCHANH/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/java/com/sang/controller/CalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/java/com/sang/controller/CalculatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/java/com/sang/service/CalculatorServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/java/com/sang/service/CalculatorServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/java/com/sang/service/ICalculatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/java/com/sang/service/ICalculatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/webapp/WEB-INF/views/calculator.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay2/bai_tap/MayTinhCaNhan/src/main/webapp/WEB-INF/views/calculator.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay2/bai_tap/Sandwich/src/main/java/controller/SandwichController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay2/bai_tap/Sandwich/src/main/java/controller/SandwichController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay2/bai_tap/Sandwich/src/main/webapp/WEB-INF/views/optionslist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay2/bai_tap/Sandwich/src/main/webapp/WEB-INF/views/optionslist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/baitap/luu-tru-cau-hinh-hom/out/artifacts/luu_tru_cau_hinh_hom_main_war_exploded/WEB-INF/views/email/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/baitap/luu-tru-cau-hinh-hom/out/artifacts/luu_tru_cau_hinh_hom_main_war_exploded/WEB-INF/views/email/create.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/baitap/luu-tru-cau-hinh-hom/src/main/java/controller/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/baitap/luu-tru-cau-hinh-hom/src/main/java/controller/EmailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/baitap/luu-tru-cau-hinh-hom/src/main/webapp/WEB-INF/views/email/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/baitap/luu-tru-cau-hinh-hom/src/main/webapp/WEB-INF/views/email/create.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/Form_DataBinding/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/Form_DataBinding/src/main/java/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/Form_DataBinding/src/main/webapp/WEB-INF/views/employee/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/Form_DataBinding/src/main/webapp/WEB-INF/views/employee/create.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/Form_DataBinding/src/main/webapp/WEB-INF/views/employee/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/Form_DataBinding/src/main/webapp/WEB-INF/views/employee/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/controller/UserLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/controller/UserLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/repository/IUserRepoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/repository/IUserRepoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/repository/UserRepoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/repository/UserRepoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/service/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/java/com/userlogin/service/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ngay3/thuchanh/userLogin/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/java/com/exercise/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/java/com/exercise/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/java/com/exercise/repository/IProductRepoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/java/com/exercise/repository/IProductRepoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/java/com/exercise/service/IProductServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/java/com/exercise/service/IProductServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/webapp/WEB-INF/views/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/webapp/WEB-INF/views/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/webapp/WEB-INF/views/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/baitap/QuanLy_Sp/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/java/com/example/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/java/com/example/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/java/com/example/repository/CustomerRepoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/java/com/example/repository/CustomerRepoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/java/com/example/service/CustomerServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/java/com/example/service/CustomerServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/webapp/WEB-INF/views/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/ngay4/thuchanh/qly_dlkh/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1qhC9O0AsujfhK32ZAt76x54UJv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ca186ce-cffc-4e5d-9078-503ba3e4d463" name="Default Changelist" comment="" />
+      <created>1617522282320</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617522282320</updated>
+      <workItem from="1617522285588" duration="1580000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

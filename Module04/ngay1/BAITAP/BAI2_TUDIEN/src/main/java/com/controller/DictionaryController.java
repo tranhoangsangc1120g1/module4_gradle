@@ -22,13 +22,13 @@ public class DictionaryController {
         searchList.put("yes", "no");
         searchList.put("no", "yes");
         String mess = "Found not find";
-        String result= searchList.get(words);
-        model.addAttribute("words",words);
-        if (result !=null){
-            model.addAttribute("resultwords",result);
+        String result = searchList.get(words);
+        model.addAttribute("words", words);
+        if (result != null) {
+            model.addAttribute("resultwords", result);
             return "result";
-        }else {
-            model.addAttribute("mess",mess);
+        } else {
+            model.addAttribute("mess", mess);
             return "words";
         }
     }

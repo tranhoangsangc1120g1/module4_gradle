@@ -15,7 +15,7 @@
 <form:form method="POST" action="/update" modelAttribute="email">
     <table>
         <tr>
-            <td><label > Language: </label></td>
+            <td><label> Language: </label></td>
             <td><form:select path="language">
                 <form:options items="${languageList}"/>
             </form:select>

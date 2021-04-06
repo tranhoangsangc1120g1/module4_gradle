@@ -35,10 +35,11 @@ public class UserRepoImp implements IUserRepoImp {
         u3.setPassword("123456");
         users.add(u3);
     }
-    public User checkLogin(Login login){
-        for (User u: users) {
-            if(u.getAccount().equals(login.getAccount())
-                    && u.getPassword().equals(login.getPassword())){
+
+    public User checkLogin(Login login) {
+        for (User u : users) {
+            if (u.getAccount().equals(login.getAccount())
+                    && u.getPassword().equals(login.getPassword())) {
                 return u;
             }
         }

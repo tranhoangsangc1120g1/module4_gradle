@@ -22,15 +22,15 @@ public class CalculatorController {
     @PostMapping("/calculate")
     public String calculate(@RequestParam float a, @RequestParam float b
             , @RequestParam char character, Model model) {
-            model.addAttribute("a", a);
-            model.addAttribute("b", b);
-            model.addAttribute("character", character);
-            try{
-                model.addAttribute("c", iCalculatorService.returnResult(a,b,character));
-            }catch (ArithmeticException e){
-                model.addAttribute("error",e.getMessage());
-            }
+        model.addAttribute("a", a);
+        model.addAttribute("b", b);
+        model.addAttribute("character", character);
+        try {
+            model.addAttribute("c", iCalculatorService.returnResult(a, b, character));
+        } catch (ArithmeticException e) {
+            model.addAttribute("error", e.getMessage());
+        }
 
-         return "calculator";
+        return "calculator";
     }
 }

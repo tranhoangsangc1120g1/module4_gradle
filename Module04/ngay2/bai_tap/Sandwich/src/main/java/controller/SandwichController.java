@@ -16,9 +16,9 @@ public class SandwichController {
     }
 
     @GetMapping("/save")
-    public String save(@RequestParam String[] condiment ,Model model) {
+    public String save(@RequestParam String[] condiment, Model model) {
 //        model.addAttribute("condiment", Arrays.toString(condiment));
-        model.addAttribute("condiment",condiment);
+        model.addAttribute("condiment", condiment);
         return "optionslist";
     }
 }

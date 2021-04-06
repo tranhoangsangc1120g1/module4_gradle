@@ -15,15 +15,15 @@
 <h3>Select Options</h3>
 <form action="/save" method="get">
 
-<input type="checkbox" name="condiment" value="lettuce"><span>Lettuce</span>
-<input type="checkbox"  name="condiment" value="Tomato"><span>Tomato</span>
-<input type="checkbox"  name="condiment" value="Mustard"><span>Mustard</span>
-<input type="checkbox" name="condiment"  value="Sprouts"><span>Sprouts</span>
-<input type="submit" name="save">
+    <input type="checkbox" name="condiment" value="lettuce"><span>Lettuce</span>
+    <input type="checkbox" name="condiment" value="Tomato"><span>Tomato</span>
+    <input type="checkbox" name="condiment" value="Mustard"><span>Mustard</span>
+    <input type="checkbox" name="condiment" value="Sprouts"><span>Sprouts</span>
+    <input type="submit" name="save">
     <p>Selected Options :
-<c:forEach items="${condiment}" var="selection">
+        <c:forEach items="${condiment}" var="selection">
     <h1> ${selection}</h1>
-</c:forEach>
+    </c:forEach>
     </p>
 </form>
 </body>

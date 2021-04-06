@@ -19,7 +19,7 @@
         <table>
             <tr>
                 <td><form:label path="account">Account:</form:label></td>
-                <td><form:input path="account"  /></td>
+                <td><form:input path="account"/></td>
             </tr>
             <tr>
                 <td><form:label path="password">Password:</form:label></td>

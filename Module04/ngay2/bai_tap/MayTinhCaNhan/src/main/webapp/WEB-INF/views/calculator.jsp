@@ -22,8 +22,8 @@
     </select>
     <input type="text" name="b" value="${b}">
     <input type="submit" value="OK">
-        <p>Result : ${c}</p>
-        <p>ERRoR : ${error}</p>
+    <p>Result : ${c}</p>
+    <p>ERRoR : ${error}</p>
 </form>
 </body>
 </html>

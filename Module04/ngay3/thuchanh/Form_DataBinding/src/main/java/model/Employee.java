@@ -8,7 +8,7 @@ public class Employee {
     public Employee(String id, String name, String contactNumber) {
         this.id = id;
         this.name = name;
-            this.contactNumber = contactNumber;
+        this.contactNumber = contactNumber;
     }
 
     public Employee() {

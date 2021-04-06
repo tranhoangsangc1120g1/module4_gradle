@@ -13,16 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserLoginController {
-    IUserRepoImp iUserRepoImp=new UserRepoImp();
+    IUserRepoImp iUserRepoImp = new UserRepoImp();
+
     @GetMapping("/home")
-    public ModelAndView home(){
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("home", "login", new Login());
         return modelAndView;
     }
+
     @PostMapping("/login")
-    public ModelAndView login(@ModelAttribute("login") Login login){
+    public ModelAndView login(@ModelAttribute("login") Login login) {
         User user = iUserRepoImp.checkLogin(login);
-        if(user == null){
+        if (user == null) {
             return new ModelAndView("error");
         } else {
             ModelAndView modelAndView = new ModelAndView("user");
