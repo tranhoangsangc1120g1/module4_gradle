@@ -49,7 +49,7 @@ public class CustomerController {
 
     @PostMapping("/customer/update")
     public String editCustomer(Customer customer) {
-        this.customerService.save(customer);
+        customerService.save(customer);
         return "redirect:/";
     }
 

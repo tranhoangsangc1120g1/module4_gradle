@@ -2,7 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Blog;
 import com.example.demo.service.IBlogService;
+import com.example.demo.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,15 +18,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class BlogController {
     @Autowired
     IBlogService blogService;
+    @Autowired
+    ICategoryService categoryService;
 
     @GetMapping("/blog")
-    public ModelAndView getHomeAdmin( ){
-        return new ModelAndView("/list","listBlog",blogService.findAll());
+    public ModelAndView getHomeAdmin(@PageableDefault(value = 10)Pageable pageable){
+        return new ModelAndView("list","listBlog",blogService.findAll(pageable));
     }
 
     @GetMapping("/create_blog")
-    public ModelAndView showCreateForm(){
-        return new ModelAndView("/create", "blog", new Blog());
+    public String showCreateForm(Model model, Pageable pageable){
+            model.addAttribute("blog",new Blog());
+            model.addAttribute("categoryList",categoryService.findAll(pageable));
+            return "create";
     }
 
     @PostMapping("/create_blog")

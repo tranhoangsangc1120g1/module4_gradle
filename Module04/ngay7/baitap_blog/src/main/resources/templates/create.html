@@ -13,24 +13,28 @@
                 <input type="text" class="form-control" th:field="*{title}" required>
             </td>
         </tr>
-        <tr>
-            <th>Category</th>
-            <td>
-                <input type="text" class="form-control" th:field="*{category}" required>
-            </td>
-        </tr>
+
+            <tr>
+                <th>Category</th>
+                <td>
+                <select th:field="*{category}">
+                    <option th:each="category : ${categoryList}" th:value="${category.id}"
+                            th:text="${category.name}"></option>
+                </select>
+                </td>
+            </tr>
         <tr>
             <th>Content</th>
             <td>
                 <textarea th:field="*{content}" required></textarea>
             </td>
         </tr>
-<!--        <tr>-->
-<!--            <th>Post Day</th>-->
-<!--            <td>-->
-<!--                <input type="date" th:field="*{postDay}" required>-->
-<!--            </td>-->
-<!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <th>Post Day</th>-->
+        <!--            <td>-->
+        <!--                <input type="date" th:field="*{postDay}" required>-->
+        <!--            </td>-->
+        <!--        </tr>-->
         <tr>
             <th>Image</th>
             <td>

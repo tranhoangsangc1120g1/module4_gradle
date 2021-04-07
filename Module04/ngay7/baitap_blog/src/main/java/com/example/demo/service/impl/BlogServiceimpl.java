@@ -6,19 +6,20 @@ import com.example.demo.model.Blog;
 import com.example.demo.reposity.IBlogRepo;
 import com.example.demo.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
 public class BlogServiceimpl implements IBlogService {
     @Autowired
     IBlogRepo iBlogRepo;
-    @Override
-    public List<Blog> findAll() {
-        return iBlogRepo.findAll();
 
+
+    @Override
+    public Page<Blog> findAll(Pageable pageable) {
+        return iBlogRepo.findAll(pageable);
     }
 
     @Override

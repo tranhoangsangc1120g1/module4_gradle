@@ -32,10 +32,10 @@
         <tbody>
         <th:block th:each="blog,rowstat : ${listBlog}">
             <tr>
-                <td th:text="${rowstat.index +1}"></td>
+                <td th:text="${rowstat.count}"></td>
                 <td th:text="${blog.id}"></td>
                 <td th:text="${blog.title}"></td>
-                <td th:text="${blog.category}"></td>
+                <td th:text="${blog.category.name}"></td>
                 <td th:text="${blog.postDay}"></td>
                 <td th:text="${blog.image}"></td>
                 <td th:text="${blog.author}"></td>
@@ -59,10 +59,12 @@
         </th:block>
         </tbody>
     </table>
-
+    <div>
+        <a th:href="@{'/blog'(page=${listBlog.number - 1})}" th:if="${listBlog.hasPrevious()}">Previous</a>
+        <span th:text="${listBlog.number + 1}"></span>/<span th:text="${listBlog.totalPages}"></span>
+        <a th:href="@{'/blog'(page=${listBlog.number + 1})}" th:if="${listBlog.hasNext()}">Next</a>
+    </div>
 </div>
-
-
 <div th:replace="/layout :: deleteModal"></div>
 <div th:replace="/layout :: script"></div>
 <div th:insert="~{layout :: footer}"></div>
