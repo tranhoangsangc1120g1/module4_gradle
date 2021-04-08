@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
+
+
 @Service
 public class BlogServiceimpl implements IBlogService {
     @Autowired
@@ -38,5 +40,10 @@ public class BlogServiceimpl implements IBlogService {
     @Override
     public void deleteById(Integer id) {
         iBlogRepo.deleteById(id);
+    }
+
+    @Override
+    public Page<Blog> findAllByTitleContaining(Pageable pageable, String keyword) {
+        return iBlogRepo.findAllByTitleContaining(pageable,keyword);
     }
 }
