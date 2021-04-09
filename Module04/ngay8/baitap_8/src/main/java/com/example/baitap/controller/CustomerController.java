@@ -18,7 +18,7 @@ public class CustomerController {
     @Autowired
     ICusService cusService;
     @GetMapping("/create_cusform")
-    public String showCreateForm(Model model){
+    public String showCreateForm(Model model ){
         model.addAttribute("customer",new Customer());
         return "create";
     }

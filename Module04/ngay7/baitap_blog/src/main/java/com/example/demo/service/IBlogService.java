@@ -19,5 +19,5 @@ public interface IBlogService  {
 
     Page<Blog> findAllByTitleContaining(Pageable pageable,String keyword);
 
-    
+
 }

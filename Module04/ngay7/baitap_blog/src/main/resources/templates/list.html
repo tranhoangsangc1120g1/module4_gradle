@@ -9,6 +9,11 @@
     <a th:href="@{/create_blog}"> <button  class="btn-primary">Create new
         </button>
     </a>
+    <form >
+        <input th:href="@{/blog(sortby=${'desc'})}" type="submit" name="sortby" value="asc">
+        <input th:href="@{/blog(sortby=${'desc'})}" type="submit" name="sortby" value="desc">
+
+    </form>
     <form>
         <input type="text" name="keyword"  >
         <input type="submit" value="search">
@@ -54,7 +59,7 @@
                         </button>
                     </a>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
-                            th:onclick="|blogSetId('${blog.id}')|">
+                            th:onclick="|blog.setId('${blog.id}')|">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </td>

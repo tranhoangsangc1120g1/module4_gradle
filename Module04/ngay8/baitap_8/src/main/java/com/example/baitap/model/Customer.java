@@ -9,30 +9,29 @@ import javax.persistence.Id;
 import javax.validation.constraints.*;
 
 @Entity
-@Configuration
 public class Customer  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Thật trống trãi khi bạn không điền gì vào")
-    @Size(min = 5, max = 45, message = "Từ 5 đên 45 con người còn chịu được , quá 45 thì chết con người ta à")
+    @NotBlank(message = "Can not be null")
+    @Size(min = 5, max = 45, message = "more than 5 characters , less than 45 characters ")
     private String firstName;
 
 
-    @NotBlank(message = "Thật trống trãi khi bạn không điền gì vào")
-    @Size(min = 5, max = 45, message = "Từ 5 đên 45 con người còn chịu được , quá 45 thì chết con người ta à")
+    @NotBlank(message = "Can not be null")
+    @Size(min = 5, max = 45, message = "more than 5 characters , less than 45 characters")
     private String lastName;
 
     @Email(message = "abc@xxx.xxx")
     private String email;
 
-    @NotNull(message = "điền vào để biết mà còn liên lạc")
-    @Pattern(regexp = "0\\d{9}",message = "điền 0 trước rồi thích điền gì thì điền")
+    @NotNull(message = "Can not be null")
+    @Pattern(regexp = "0\\d{9}",message = "Starting with 0 and 9 numbers")
     private String phoneNumber;
 
-    @Min(value = 18, message = "Đủ tuổi để vấp ngã rồi")
-    @Max(value = 150, message = "Sống quá lâu rồi đó")
+    @Min(value = 18, message = " 18 years older")
+    @Max(value = 150, message = "Less than 150 ys ")
     private double age;
     public Customer() {
     }

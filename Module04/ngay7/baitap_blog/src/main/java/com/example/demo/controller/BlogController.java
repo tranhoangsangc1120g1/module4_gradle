@@ -29,18 +29,25 @@ public class BlogController {
     ICategoryService categoryService;
 
     @GetMapping("/blog")
-    public ModelAndView getHomeAdmin(@PageableDefault(value = 2) Pageable pageable,
-                                     @RequestParam(name = "keyword") Optional<String> keyword) {
+    public ModelAndView getHomeAdmin(@PageableDefault(value = 3) Pageable pageable,
+                                     @RequestParam(name = "keyword") Optional<String> keyword,
+                                     @RequestParam(name = "sortby") Optional<String> sortby) {
         Page<Blog> listBlog;
-        Pageable pageSortByTitle = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("postDay").descending());
-
+        ModelAndView modelAndView =new ModelAndView("list");
+        if (sortby.isPresent()) {
+            if (sortby.get().equals("desc")) {
+                Pageable pageSortByTitle = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("title").descending());
+            } else {
+                Pageable pageSortByTitle = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("title").ascending());
+            }
+        }
         if (keyword.isPresent()) {
             listBlog = blogService.findAllByTitleContaining(pageable,keyword.get());
         } else {
             listBlog = blogService.findAll(pageable);
         }
-
-        return new ModelAndView("list","listBlog",listBlog);
+         modelAndView.addObject("listBlog",listBlog);
+        return modelAndView;
     }
 
     @GetMapping("/create_blog")
