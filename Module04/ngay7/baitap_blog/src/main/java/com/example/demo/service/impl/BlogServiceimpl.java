@@ -47,4 +47,9 @@ public class BlogServiceimpl implements IBlogService {
         return iBlogRepo.findAllByTitleContaining(pageable,keyword);
     }
 
+    @Override
+    public Page<Blog> sort(Pageable pageable) {
+        return iBlogRepo.findByOrderByTitleDesc(pageable);
+    }
+
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Product detail</h3>
+<p><a th:href="@{/}">Back to customer list</a></p>
+<form>
+
+        <legend>Customer detail</legend>
+        <th style="font-weight: bold">Id:</th>
+        <label th:text="${customer.id}"></label><br><br>
+        <th style="font-weight: bold">FirstName:</th>
+        <label th:text="${customer.firstName}"></label><br><br>
+        <th style="font-weight: bold">LastName:</th>
+        <label th:text="${customer.lastName}"></label><br><br>
+        <th style="font-weight: bold">Province:</th>
+        <label th:text="${customer.province.name}"></label><br><br>
+
+</form>
+</body>
+</html>

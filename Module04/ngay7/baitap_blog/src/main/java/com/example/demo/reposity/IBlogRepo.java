@@ -10,4 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IBlogRepo extends JpaRepository<Blog,Integer> {
     Page<Blog> findAllByTitleContaining(Pageable pageable,String keyword);
+    Page<Blog> findByOrderByTitleDesc(Pageable pageable);
 }

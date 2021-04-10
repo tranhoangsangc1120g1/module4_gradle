@@ -30,23 +30,19 @@ public class BlogController {
 
     @GetMapping("/blog")
     public ModelAndView getHomeAdmin(@PageableDefault(value = 3) Pageable pageable,
-                                     @RequestParam(name = "keyword") Optional<String> keyword,
                                      @RequestParam(name = "sortby") Optional<String> sortby) {
         Page<Blog> listBlog;
+
+//        if (sortby.isPresent()) {
+//            if (sortby.get().equals("desc")) {
+//                Pageable pageSortByTitle = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("title").descending());
+//            }
+//        }
+
         ModelAndView modelAndView =new ModelAndView("list");
-        if (sortby.isPresent()) {
-            if (sortby.get().equals("desc")) {
-                Pageable pageSortByTitle = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("title").descending());
-            } else {
-                Pageable pageSortByTitle = PageRequest.of(pageable.getPageNumber(), 3, Sort.by("title").ascending());
-            }
-        }
-        if (keyword.isPresent()) {
-            listBlog = blogService.findAllByTitleContaining(pageable,keyword.get());
-        } else {
-            listBlog = blogService.findAll(pageable);
-        }
-         modelAndView.addObject("listBlog",listBlog);
+//        modelAndView.addObject("sortby",sortby);
+        modelAndView.addObject("listBlog",blogService.sort(pageable));
+//         modelAndView.addObject("listBlog",listBlog);
         return modelAndView;
     }
 
@@ -90,6 +86,16 @@ public class BlogController {
         blogService.deleteById(id);
         redirect.addFlashAttribute("message", "Delete Successfully");
         return "redirect:/blog";
+    }
+    @GetMapping("/search_blog")
+    public ModelAndView searchBlog( @RequestParam(name = "keyword") Optional<String> keyword,Pageable pageable){
+       Page<Blog> listBlog;
+        if (keyword.isPresent()) {
+            listBlog = blogService.findAllByTitleContaining(pageable,keyword.get());
+        } else {
+            listBlog = blogService.findAll(pageable);
+        }
+        return new ModelAndView("list","listBlog",listBlog);
     }
 
 }
