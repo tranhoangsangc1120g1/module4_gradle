@@ -13,12 +13,13 @@
         <th>Amount</th>
         <th>Delete</th>
     </tr>
-    <th:block th:each="product : ${mapcart}">
+    <th:block th:each="product : ${mapCart}">
         <tr>
+            <td th:text="${product.id}"></td>
             <td th:text="${product.nameProduct}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${cart.getAmount(product)}"></td>
-            <td><a th:href="@{/deleted/__${product.id}__ }">Delete</a></td>
+            <td><a th:href="@{/deleted/(id=${product.id})}">Delete</a></td>
         </tr>
     </th:block>
 </table>

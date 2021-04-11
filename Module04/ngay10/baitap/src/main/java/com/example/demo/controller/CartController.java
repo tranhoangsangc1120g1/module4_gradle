@@ -17,6 +17,6 @@ public class CartController {
 
     @GetMapping("/cart")
     public ModelAndView showCart(@ModelAttribute("cart")Cart cart){
-        return new ModelAndView("listCart","mapCart",cart.getCart());
+        return new ModelAndView("listCart","mapCart",cart.getCart().keySet());
     }
 }

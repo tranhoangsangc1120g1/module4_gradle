@@ -33,18 +33,22 @@ public class ProductController {
     public  ModelAndView addToCart(@RequestParam(name = "id") int id, Cart cart  ){
         Product product = productService.findById(id);
             ModelAndView modelAndView =new ModelAndView("listCart");
-        if (product==null){
-            modelAndView.addObject("message","Error");
-        }else{
-            modelAndView.addObject("product",product);
-            cart.addToCart(product);
-            modelAndView.addObject("message","Add to cart successfully\nAmount:");
-        }
+//        if (product==null){
+//            modelAndView.addObject("message","Error");
+//        }else{
+//            modelAndView.addObject("product",product);
+//
+//        }
+        cart.addToCart(product);
+        modelAndView.addObject("message","Add to cart successfully\nAmount:");
 //        List<Product> listProduct = new ArrayList<>(cart.getCart().keySet());
 //        modelAndView.addObject("listProduct",listProduct);
-        modelAndView.addObject("mapcart",cart.getCart().keySet());
-
-
+        modelAndView.addObject("mapCart",cart.getCart().keySet());
         return modelAndView;
+    }
+    @GetMapping("/deleted")
+    public ModelAndView deletedProductInCart(@RequestParam(name = "id") int id,Cart cart){
+        cart.removeProduct(productService.findById(id));
+        return new ModelAndView("redirect:/cart");
     }
 }
