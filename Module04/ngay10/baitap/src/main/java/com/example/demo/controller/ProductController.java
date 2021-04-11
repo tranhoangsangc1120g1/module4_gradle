@@ -32,17 +32,18 @@ public class ProductController {
     @PostMapping("/addtocart")
     public  ModelAndView addToCart(@RequestParam(name = "id") int id, Cart cart  ){
         Product product = productService.findById(id);
-        List<Product> listProduct=new ArrayList<>();
-        for (Product k: cart.getCart().keySet()) {
-            listProduct.add(k);
-        }
-        ModelAndView modelAndView=new ModelAndView("listCart","listProduct",listProduct);
+            ModelAndView modelAndView =new ModelAndView("listCart");
         if (product==null){
             modelAndView.addObject("message","Error");
         }else{
+            modelAndView.addObject("product",product);
             cart.addToCart(product);
             modelAndView.addObject("message","Add to cart successfully\nAmount:");
         }
+        List<Product> listProduct = new ArrayList<>(cart.getCart().keySet());
+        modelAndView.addObject("listProduct",listProduct);
+
+
         return modelAndView;
     }
 }
