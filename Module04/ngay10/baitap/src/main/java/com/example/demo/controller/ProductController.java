@@ -40,8 +40,9 @@ public class ProductController {
             cart.addToCart(product);
             modelAndView.addObject("message","Add to cart successfully\nAmount:");
         }
-        List<Product> listProduct = new ArrayList<>(cart.getCart().keySet());
-        modelAndView.addObject("listProduct",listProduct);
+//        List<Product> listProduct = new ArrayList<>(cart.getCart().keySet());
+//        modelAndView.addObject("listProduct",listProduct);
+        modelAndView.addObject("mapcart",cart.getCart().keySet());
 
 
         return modelAndView;

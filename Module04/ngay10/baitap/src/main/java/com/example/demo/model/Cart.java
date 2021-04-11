@@ -17,7 +17,7 @@ public class Cart {
 
     public void addToCart(Product product){
         if (cart.containsKey(product)){
-            cart.replace(product,cart.get(product),cart.get(product)+1);
+            cart.replace(product,cart.get(product),cart.get(product) +1);
         }else {
             cart.put(product,1);
         }

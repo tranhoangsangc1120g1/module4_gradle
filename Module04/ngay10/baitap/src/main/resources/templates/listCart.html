@@ -13,7 +13,7 @@
         <th>Amount</th>
         <th>Delete</th>
     </tr>
-    <th:block th:each="product : ${listProduct}">
+    <th:block th:each="product : ${mapcart}">
         <tr>
             <td th:text="${product.nameProduct}"></td>
             <td th:text="${product.price}"></td>
