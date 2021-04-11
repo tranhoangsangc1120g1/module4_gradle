@@ -8,12 +8,13 @@
 <h1>Cart</h1>
 <table border="1">
     <tr>
+        <th>ID</th>
         <th>Product Name</th>
         <th>Price</th>
         <th>Amount</th>
         <th>Delete</th>
     </tr>
-    <th:block th:each="product : ${mapCart}">
+    <th:block th:each="product : ${mapCart.keySet()}">
         <tr>
             <td th:text="${product.id}"></td>
             <td th:text="${product.nameProduct}"></td>
@@ -23,7 +24,8 @@
         </tr>
     </th:block>
 </table>
-<p th:if="${message}" th:text="${messages}"></p>
+<p th:if="${mess}" th:text="${mess}"></p>
 <a th:href="@{/product}">Product list</a>
+
 </body>
 </html>

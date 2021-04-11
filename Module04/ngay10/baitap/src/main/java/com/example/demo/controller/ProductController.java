@@ -7,17 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
+@SessionAttributes(names = "cart")
 public class ProductController {
+    @ModelAttribute("cart")
+    public Cart cart(){
+        return new Cart();
+    }
     @Autowired
     IProductService productService;
     @GetMapping("/product")
@@ -41,14 +42,20 @@ public class ProductController {
 //        }
         cart.addToCart(product);
         modelAndView.addObject("message","Add to cart successfully\nAmount:");
-//        List<Product> listProduct = new ArrayList<>(cart.getCart().keySet());
-//        modelAndView.addObject("listProduct",listProduct);
-        modelAndView.addObject("mapCart",cart.getCart().keySet());
+        modelAndView.addObject("mapCart",cart.getCart());
         return modelAndView;
     }
     @GetMapping("/deleted")
     public ModelAndView deletedProductInCart(@RequestParam(name = "id") int id,Cart cart){
         cart.removeProduct(productService.findById(id));
-        return new ModelAndView("redirect:/cart");
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.addObject("mess","Deleted Successfully");
+        return modelAndView;
+    }
+
+
+    @GetMapping("/cart")
+    public ModelAndView showCart(@ModelAttribute("cart")Cart cart){
+        return new ModelAndView("listCart","mapCart",cart.getCart());
     }
 }
