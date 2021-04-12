@@ -36,5 +36,4 @@ public class Cart {
     public void setCart(Map<Product, Integer> cart) {
         this.cart = cart;
     }
-
 }

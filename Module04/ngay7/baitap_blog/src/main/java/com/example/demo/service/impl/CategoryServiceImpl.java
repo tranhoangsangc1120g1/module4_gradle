@@ -9,13 +9,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl  implements ICategoryService {
     @Autowired
     ICategoryRepository repository;
     @Override
-    public Page<Category> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Category> findAll( ) {
+        return repository.findAll();
     }
 
     @Override
