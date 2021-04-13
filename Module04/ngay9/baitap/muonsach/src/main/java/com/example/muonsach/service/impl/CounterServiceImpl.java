@@ -4,7 +4,9 @@ import com.example.muonsach.model.Counter;
 import com.example.muonsach.repository.ICounterRepo;
 import com.example.muonsach.service.ICounterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CounterServiceImpl  implements ICounterService {
     @Autowired
     ICounterRepo counterRepo;

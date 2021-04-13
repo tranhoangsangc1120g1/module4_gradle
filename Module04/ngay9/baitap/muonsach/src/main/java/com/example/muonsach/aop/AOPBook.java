@@ -22,7 +22,7 @@ public class AOPBook {
 
     @After("execution(* com.example.muonsach.controller.BookController.getHome(..))")
     public void afterVisit(JoinPoint joinPoint){
-        System.out.println(counterService.getCounter(1));
+        counterService.getVisitCount(1);
+        System.out.println("count: " + counterService.getCounter(1));
     }
-
 }
