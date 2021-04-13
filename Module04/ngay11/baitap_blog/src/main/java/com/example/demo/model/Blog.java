@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "blog")
@@ -16,12 +18,14 @@ public class Blog {
     private String author;
     private String description;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "categories",  referencedColumnName = "category_id")
+    @JoinColumn(name = "categories", nullable = false, referencedColumnName = "category_id")
     private Category category;
 
     @Column(columnDefinition = "blob")
     private String content;
+
     public Blog() {
     }
 
