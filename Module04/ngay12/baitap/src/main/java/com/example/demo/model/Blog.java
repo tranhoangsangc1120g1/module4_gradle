@@ -17,7 +17,7 @@ public class Blog {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "categories",  referencedColumnName = "category_id")
+    @JoinColumn(name = "categories", nullable =true , referencedColumnName = "category_id")
     private Category category;
 
     @Column(columnDefinition = "blob")

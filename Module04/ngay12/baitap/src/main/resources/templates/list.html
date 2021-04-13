@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+<div th:replace="/layout :: script"></div>
+
+
+<div class="container">
+    <h1  class="text-center">List Blog</h1>
+        <button  class="btn-primary" id="btnModalCreate">Create new
+        </button>
+    <form >
+        <input th:href="@{/blog(sortby=${'asc'})}" type="submit" name="sortby" value="asc">
+        <input th:href="@{/blog(sortby=${'desc'})}" type="submit" name="sortby" value="desc">
+
+    </form>
+    <form >
+        <input id="keySearch"  type="text" name="keyword" >
+        <button id="btnSearch" > Search</button>
+    </form>
+    <div >
+        <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+            <button type="button" class="close float-right" data-dismiss="alert">&times;</button>
+            <span th:if="${message}" th:text="${message}"></span>
+        </div>
+    </div>
+    <table class=" table table-hover" id="listBlog">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>PostDay</th>
+            <th>Image</th>
+            <th>Author</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="blog,rowstat : ${listBlog}">
+            <tr>
+                <td th:text="${rowstat.count}"></td>
+                <td th:text="${blog.id}"></td>
+                <td th:text="${blog.title}"></td>
+                <td th:text="${blog.category.name}"></td>
+                <td th:text="${blog.postDay}"></td>
+                <td th:text="${blog.image}"></td>
+                <td th:text="${blog.author}"></td>
+                <td>
+                    <a  th:href="@{/view(id=${blog.id})}">
+                        <button class="btn btn-info">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </a>
+<!--                    <a  th:href="@{/show_edit(id=${blog.id})}">-->
+                        <button class="editBlog btn-light"  th:value="${blog.id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+<!--                    </a>-->
+                    <button class="deleteBlog btn-danger" th:value="${blog.id}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+<!--    <div>-->
+<!--        <a th:href="@{'/blog'(page=${listBlog.number - 1})}" th:if="${listBlog.hasPrevious()}">Previous</a>-->
+<!--        <span th:text="${listBlog.number + 1}"></span>/<span th:text="${listBlog.totalPages}"></span>-->
+<!--        <a th:href="@{'/blog'(page=${listBlog.number + 1})}" th:if="${listBlog.hasNext()}">Next</a>-->
+<!--    </div>-->
+</div>
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnModalCreate").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/create_blog",
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#modelId").modal('show');
+                }
+            });
+        });
+        $(".editBlog").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/show_edit?id=" + $(this).val(),
+                dataType: "HTML",
+                success: function (data) {
+                    $(".modal-body").html(data);
+                    $("#modelId").modal('show');
+                }
+            });
+        });
+    });
+    $(".deleteBlog").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/delete?id=" + $(this).val(),
+            dataType: "HTML",
+            success: function (data) {
+                $(".modal-body").html(data);
+                $("#modelId").modal('show');
+            }
+        });
+    });
+
+    // $('#country_name').keyup(function(){ //bắt sự kiện keyup khi người dùng gõ từ khóa tim kiếm
+    //     var query = $(this).val(); //lấy gía trị ng dùng gõ
+    //     if(query != '') //kiểm tra khác rỗng thì thực hiện đoạn lệnh bên dưới
+    //     {
+    //         var _token = $('input[name="_token"]').val(); // token để mã hóa dữ liệu
+    //         $.ajax({
+    //             url:"{{ route('search') }}", // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
+    //             method:"POST", // phương thức gửi dữ liệu.
+    //             data:{query:query, _token:_token},
+    //             success:function(data){ //dữ liệu nhận về
+    //                 $('#countryList').fadeIn();
+    //                 $('#countryList').html(data); //nhận dữ liệu dạng html và gán vào cặp thẻ có id là countryList
+    //             }
+    //         });
+    //     }
+    // });
+    //
+    // $(document).on('click', 'li', function(){
+    //     $('#country_name').val($(this).text());
+    //     $('#countryList').fadeOut();
+    // });
+    $("#btnSearch").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/search_blog?keyword=" + $("#keySearch").val(),
+            dataType: "HTML",
+            success: function (data) {
+                // $("#modelId").modal('show');
+                // $('#listBlog').html(data);
+                // $(".modal-body").html(data);
+                $("#list").html(data)
+
+            },
+        });
+    })
+
+</script>
+<!--<div th:replace="/layout :: deleteModal"></div>-->
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>

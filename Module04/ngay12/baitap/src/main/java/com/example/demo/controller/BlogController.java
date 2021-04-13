@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Blog;
 import com.example.demo.service.IBlogService;
 import com.example.demo.service.ICategoryService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Optional;
 
 @Controller
 public class BlogController {
@@ -25,11 +25,9 @@ public class BlogController {
     ICategoryService categoryService;
 
     @GetMapping("/blog")
-    public ModelAndView getHomeAdmin(@PageableDefault(value = 20) Pageable pageable,
-                                     @RequestParam(name = "sortby") Optional<String> sortby) {
-        Page<Blog> listBlog;
-
-    }
+    public ModelAndView getHomeAdmin(@PageableDefault(value = 20) Pageable pageable) {
+        return new ModelAndView("list","listBlog",blogService.findAll(pageable));
+    };
 
     @GetMapping("/create_blog")
     public String showCreateForm(Model model, Pageable pageable) {
@@ -66,21 +64,30 @@ public class BlogController {
         return "redirect:/blog";
     }
 
-    @PostMapping("/delete")
-    public String deleteBlog(@RequestParam Integer id, RedirectAttributes redirect) {
-        blogService.deleteById(id);
-        redirect.addFlashAttribute("message", "Delete Successfully");
-        return "redirect:/blog";
+    @GetMapping("/delete")
+    public ModelAndView deleteForm(@RequestParam Integer id) {
+        ModelAndView modelAndView=new ModelAndView("delete");
+        modelAndView.addObject("blog",blogService.findById(id));
+        return modelAndView;
     }
+    @PostMapping("/delete_blog")
+    public ModelAndView submitDelete(@RequestParam Integer id){
+        blogService.deleteById(id);
+        return new ModelAndView("list","mess","deleted Successfully");
+    }
+
     @GetMapping("/search_blog")
-    public ModelAndView searchBlog( @RequestParam(name = "keyword") Optional<String> keyword,Pageable pageable){
+    public String searchBlog( @RequestParam(name = "keyword") String keyword,Pageable pageable,Model model){
        Page<Blog> listBlog;
-        if (keyword.isPresent()) {
-            listBlog = blogService.findAllByTitleContaining(pageable,keyword.get());
-        } else {
+        if (keyword.trim().equals("")) {
             listBlog = blogService.findAll(pageable);
+
+        } else {
+            listBlog = blogService.findAllByTitleContaining(pageable,keyword);
         }
-        return new ModelAndView("list","listBlog",listBlog);
+//        return new ModelAndView("/search::listBlog","listBlog",listBlog);
+        model.addAttribute("listBlog",listBlog);
+        return "/search::list-body";
     }
 
 }
