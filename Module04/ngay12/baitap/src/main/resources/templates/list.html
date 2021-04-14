@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{layout :: head}"></head>
-<body>
+<body id="listBlog">
 <div th:insert="~{layout :: header}"></div>
 <div th:replace="/layout :: script"></div>
 
 
 <div class="container">
-    <h1  class="text-center">List Blog</h1>
-        <button  class="btn-primary" id="btnModalCreate">Create new
-        </button>
-    <form >
+    <h1 class="text-center">List Blog</h1>
+    <button class="btn-primary" id="btnModalCreate">Create new
+    </button>
+    <form>
         <input th:href="@{/blog(sortby=${'asc'})}" type="submit" name="sortby" value="asc">
         <input th:href="@{/blog(sortby=${'desc'})}" type="submit" name="sortby" value="desc">
 
     </form>
-    <form >
-        <input id="keySearch"  type="text" name="keyword" >
-        <button id="btnSearch" > Search</button>
-    </form>
-    <div >
+
+    <input id="keySearch" type="text" name="keyword">
+    <button id="btnSearch"> Search</button>
+
+    <div>
         <div class="alert alert-success alert-dismissible fade show font-weight-bold">
             <button type="button" class="close float-right" data-dismiss="alert">&times;</button>
             <span th:if="${message}" th:text="${message}"></span>
         </div>
     </div>
-    <table class=" table table-hover" id="listBlog">
+    <table class=" table table-hover">
         <thead>
         <tr>
             <th>No</th>
@@ -39,40 +39,41 @@
         </tr>
         </thead>
         <tbody>
-        <th:block th:each="blog,rowstat : ${listBlog}">
-            <tr>
-                <td th:text="${rowstat.count}"></td>
-                <td th:text="${blog.id}"></td>
-                <td th:text="${blog.title}"></td>
-                <td th:text="${blog.category.name}"></td>
-                <td th:text="${blog.postDay}"></td>
-                <td th:text="${blog.image}"></td>
-                <td th:text="${blog.author}"></td>
-                <td>
-                    <a  th:href="@{/view(id=${blog.id})}">
-                        <button class="btn btn-info">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </a>
-<!--                    <a  th:href="@{/show_edit(id=${blog.id})}">-->
-                        <button class="editBlog btn-light"  th:value="${blog.id}">
-                            <i class="fas fa-edit"></i>
-                        </button>
-<!--                    </a>-->
-                    <button class="deleteBlog btn-danger" th:value="${blog.id}">
-                        <i class="fas fa-trash-alt"></i>
+
+        <tr th:each="blog,rowstat : ${listBlog}">
+            <td th:text="${rowstat.count}"></td>
+            <td th:text="${blog.id}"></td>
+            <td th:text="${blog.title}"></td>
+            <td th:text="${blog.category.name}"></td>
+            <td th:text="${blog.postDay}"></td>
+            <td th:text="${blog.image}"></td>
+            <td th:text="${blog.author}"></td>
+            <td>
+                <a th:href="@{/view(id=${blog.id})}">
+                    <button class="btn btn-info">
+                        <i class="fas fa-eye"></i>
                     </button>
-                </td>
-            </tr>
-        </th:block>
+                </a>
+                <!--                    <a  th:href="@{/show_edit(id=${blog.id})}">-->
+                <button class="editBlog btn-light" th:value="${blog.id}">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <!--                    </a>-->
+                <button class="deleteBlog btn-danger" th:value="${blog.id}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+
         </tbody>
     </table>
+    <button id="loadPage" name="loadMore"></button>
 
-<!--    <div>-->
-<!--        <a th:href="@{'/blog'(page=${listBlog.number - 1})}" th:if="${listBlog.hasPrevious()}">Previous</a>-->
-<!--        <span th:text="${listBlog.number + 1}"></span>/<span th:text="${listBlog.totalPages}"></span>-->
-<!--        <a th:href="@{'/blog'(page=${listBlog.number + 1})}" th:if="${listBlog.hasNext()}">Next</a>-->
-<!--    </div>-->
+    <!--    <div>-->
+    <!--        <a th:href="@{'/blog'(page=${listBlog.number - 1})}" th:if="${listBlog.hasPrevious()}">Previous</a>-->
+    <!--        <span th:text="${listBlog.number + 1}"></span>/<span th:text="${listBlog.totalPages}"></span>-->
+    <!--        <a th:href="@{'/blog'(page=${listBlog.number + 1})}" th:if="${listBlog.hasNext()}">Next</a>-->
+    <!--    </div>-->
 </div>
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -158,14 +159,25 @@
             url: "/search_blog?keyword=" + $("#keySearch").val(),
             dataType: "HTML",
             success: function (data) {
-                // $("#modelId").modal('show');
-                // $('#listBlog').html(data);
-                // $(".modal-body").html(data);
-                $("#list").html(data)
 
+                $('#listBlog').html(data);
+                // $(".modal-body").html(data);
+                // $("#modelId").modal('show');
             },
         });
-    })
+    });
+    // function getListLoad() {
+    //     $.ajax({
+    //         type:"GET",
+    //         url:"/blog",
+    //         dataType:"json",
+    //         success:function (data) {
+    //             $
+    //         }
+    //     })
+    // }
+
+
 
 </script>
 <!--<div th:replace="/layout :: deleteModal"></div>-->

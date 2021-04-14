@@ -5,9 +5,7 @@ import com.example.demo.service.IBlogService;
 import com.example.demo.service.ICategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 
 @Controller
@@ -25,9 +25,14 @@ public class BlogController {
     ICategoryService categoryService;
 
     @GetMapping("/blog")
-    public ModelAndView getHomeAdmin(@PageableDefault(value = 20) Pageable pageable) {
-        return new ModelAndView("list","listBlog",blogService.findAll(pageable));
+    public ModelAndView getHomeAdmin() {
+        return new ModelAndView("list","listBlog",blogService.findAll());
     };
+//    @GetMapping("/blog")
+//    public List<Blog> getListLoad(Model model){
+//        model.addAttribute("listBlog",blogService.findAll());
+//        return blogService.findAll();
+//    }
 
     @GetMapping("/create_blog")
     public String showCreateForm(Model model, Pageable pageable) {
@@ -77,17 +82,16 @@ public class BlogController {
     }
 
     @GetMapping("/search_blog")
-    public String searchBlog( @RequestParam(name = "keyword") String keyword,Pageable pageable,Model model){
-       Page<Blog> listBlog;
+    public String searchBlog( @RequestParam(name = "keyword") String keyword,Model model){
+       List<Blog> listBlog;
         if (keyword.trim().equals("")) {
-            listBlog = blogService.findAll(pageable);
+            listBlog = blogService.findAll();
 
         } else {
-            listBlog = blogService.findAllByTitleContaining(pageable,keyword);
+            listBlog = blogService.findByTitle(keyword);
         }
 //        return new ModelAndView("/search::listBlog","listBlog",listBlog);
         model.addAttribute("listBlog",listBlog);
-        return "/search::list-body";
+        return "list";
     }
-
 }

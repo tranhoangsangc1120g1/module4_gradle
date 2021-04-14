@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+
+<div class="container">
+    <h1  class="text-center" th:text="#{listBlog.title}"></h1>
+    Language: <a href="?lang=en">English</a> | <a href="?lang=vi">VN</a>
+    <a th:href="@{/create_blog}"> <button  class="btn-primary" th:text="#{listBlog.heading}">
+        </button>
+    </a>
+
+    <div th:if="${message}">
+        <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+            <button type="button" class="close float-right" data-dismiss="alert">&times;</button>
+            <span th:text="${message}"></span>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th th:text="#{listBlog.No}"></th>
+            <th th:text="#{listBlog.ID}"></th>
+            <th th:text="#{listBlog.Category}"></th>
+            <th th:text="#{listBlog.PostDay}"></th>
+            <th th:text="#{listBlog.Image}"></th>
+            <th th:text="#{listBlog.Author}"></th>
+            <th th:text="#{listBlog.Options}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="blog,rowstat : ${listBlog}">
+            <tr>
+                <td th:text="${rowstat.index +1}"></td>
+                <td th:text="${blog.id}"></td>
+                <td th:text="${blog.title}"></td>
+                <td th:text="${blog.category}"></td>
+                <td th:text="${blog.postDay}"></td>
+                <td th:text="${blog.image}"></td>
+                <td th:text="${blog.author}"></td>
+                <td>
+                    <a  th:href="@{/view(id=${blog.id})}">
+                        <button class="btn btn-info">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </a>
+                    <a  th:href="@{/show_edit(id=${blog.id})}">
+                        <button class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
+                            th:onclick="|blogSetId('${blog.id}')|">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+<div th:replace="/layout :: deleteModal"></div>
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>
