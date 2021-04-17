@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{layout :: head}"></head>
-<body id="listBlog">
+<body >
 <div th:insert="~{layout :: header}"></div>
 <div th:replace="/layout :: script"></div>
 
@@ -25,7 +25,7 @@
             <span th:if="${message}" th:text="${message}"></span>
         </div>
     </div>
-    <table class=" table table-hover">
+    <table class=" table table-hover" id="listBlog">
         <thead>
         <tr>
             <th>No</th>
@@ -67,7 +67,7 @@
 
         </tbody>
     </table>
-    <button id="loadPage" name="loadMore"></button>
+    <button id="btnMore" name="loadMore"></button>
 
     <!--    <div>-->
     <!--        <a th:href="@{'/blog'(page=${listBlog.number - 1})}" th:if="${listBlog.hasPrevious()}">Previous</a>-->
@@ -166,16 +166,34 @@
             },
         });
     });
-    // function getListLoad() {
-    //     $.ajax({
-    //         type:"GET",
-    //         url:"/blog",
-    //         dataType:"json",
-    //         success:function (data) {
-    //             $
-    //         }
-    //     })
-    // }
+
+
+    // let idStudent = 1;
+    // $.ajax({
+    //     type: "GET", //GET, DELETE, PUT...
+    //     url: "http://localhost:8080/apiStudent/detail/" + idStudent,
+    //     dataType: "json",
+    //     // dataType: "text",
+    //     success: function(result){
+    //         console.log(result);
+    //         $("#spanName").html(result.name);
+    //         $("#spanDateOfBirth").html(result.dateOfBirth);
+    //         $("#spanClassName").html(result.classStudent.name);
+    //         // $("#divBody").html(result.name);
+    //
+    //     },
+    //     error: function(result) {
+    //         console.log("Fail");
+    //     }
+    // });
+    //
+    // $("#btnMore").click(function() {
+    //     let oldHtml = $("#divBody").html();
+    //
+    //     // call webservice
+    //     oldHtml += "<br>Info";
+    //     $("#divBody").html(oldHtml);
+    // });
 
 
 
