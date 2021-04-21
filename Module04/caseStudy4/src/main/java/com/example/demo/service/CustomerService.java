@@ -9,4 +9,5 @@ public interface CustomerService {
     Customer findById(String id );
     void save(Customer customer);
     void remove(String id);
+    Page<Customer> searchByName(String name , Pageable pageable);
 }

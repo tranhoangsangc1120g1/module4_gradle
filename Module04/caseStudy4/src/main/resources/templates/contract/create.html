@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+<div th:insert="~{layout :: header}"></div>
+<form th:action="@{/contract/create_contract}" method="post" th:object="${contract}">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div th:if="${message}">
+                <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+                    <button type="button" class="close float-right" data-dismiss="alert">&times;</button>
+                    <span th:if="${message}" th:text="${message}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead></thead>
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <td>
+                <input type="hidden" class="form-control" th:field="*{contractId}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Employee Id</th>
+            <td>
+                <select th:field="*{employee}">
+                    <option th:each="employee :${employeeList}" th:value="${contract.employee.id}"
+                            th:text="${contract.employee.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Customer Id</th>
+            <select th:field="*{customer}">
+                <option th:each="customer :${customerList}" th:value="${contract.customer.id}"
+                        th:text="${contract.customer.name}"></option>
+            </select>
+        </tr>
+        <tr>
+            <th>Service Id</th>
+            <select th:field="*{service}">
+                <option th:each="service :${serviceList}" th:value="${contract.service.serviceId}"
+                        th:text="${contract.service.serviceName}"></option>
+            </select>
+        </tr>
+        <tr>
+            <th>Start Day</th>
+            <td>
+                <input type="date" class="form-control" th:field="*{startDate}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>End Day</th>
+            <td>
+                <input type="date" class="form-control" th:field="*{endDate}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Deposit</th>
+            <td>
+                <input type="text" class="form-control" th:field="*{deposit}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>
+                <input type="text" class="form-control" th:field="*{total}" required>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" type="submit">Create</button>
+</form>
+
+<div th:replace="/layout :: script"></div>
+<div th:insert="~{layout :: footer}"></div>
+</body>
+</html>

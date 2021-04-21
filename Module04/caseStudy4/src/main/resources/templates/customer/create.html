@@ -10,13 +10,13 @@
         <tr>
             <th>ID</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerId}" required>
+                <input type="text" class="form-control" th:field="*{id}" required>
             </td>
         </tr>
         <tr>
             <th>Name</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerName}" required>
+                <input type="text" class="form-control" th:field="*{name}" required>
             </td>
         </tr>
         <tr>
@@ -31,13 +31,13 @@
         <tr>
             <th>Birthday</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerBirthday}" required>
+                <input type="date" class="form-control" th:field="*{birthday}" required>
             </td>
         </tr>
         <tr>
             <th>Gender</th>
             <td>
-            <select th:field="*{customerGender}">
+            <select th:field="*{gender}">
                 <option value="1">Male</option>
                 <option value="0">FeMale</option>
             </select>
@@ -46,25 +46,25 @@
         <tr>
             <th>ID Card</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerIdCard}" required>
+                <input type="text" class="form-control" th:field="*{idCard}" required>
             </td>
         </tr>
         <tr>
             <th>Phone</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerPhone}" required>
+                <input type="text" class="form-control" th:field="*{phoneNumber}" required>
             </td>
         </tr>
         <tr>
             <th>Email</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerEmail}" required>
+                <input type="email" class="form-control" th:field="*{email}" required>
             </td>
         </tr>
         <tr>
             <th>Address</th>
             <td>
-                <input type="text" class="form-control" th:field="*{customerAddress}" required>
+                <input type="text" class="form-control" th:field="*{address}" required>
             </td>
         </tr>
         

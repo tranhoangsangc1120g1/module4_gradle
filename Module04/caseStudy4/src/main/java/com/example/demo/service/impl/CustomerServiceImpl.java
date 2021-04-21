@@ -32,4 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
     public void remove(String id) {
         customerRepo.deleteById(id);
     }
+
+    @Override
+    public Page<Customer> searchByName(String name,Pageable pageable) {
+        return customerRepo.findByNameContaining(name,pageable);
+    }
+
 }

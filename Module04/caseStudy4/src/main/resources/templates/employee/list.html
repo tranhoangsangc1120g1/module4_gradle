@@ -5,10 +5,10 @@
 <div th:insert="~{layout :: header}"></div>
 <div th:replace="/layout :: script"></div>
 <div class="container-fluid">
-    <h1 class="text-center">List Customer</h1>
+    <h1 class="text-center">List Employee</h1>
     <div class="row mb-lg-3">
         <div class="col-lg-3">
-            <form th:action="@{/customer/create_customer}" method="get">
+            <form th:action="@{/employee/create_employee}" method="get">
                 <button class="btn btn-primary" id="btnModalCreate">Create new</button>
             </form>
         </div>
@@ -16,7 +16,7 @@
 
         </div>
         <div class="col-lg-3">
-            <form th:action="@{/customer/search_customer}">
+            <form th:action="@{/employee/search_employee}">
                 <div class="row">
                     <input class="form-control col-8" id="keySearch" type="text" name="name">
                     <button class="btn btn-success col-3" id="btnSearch" type="submit">Search</button>
@@ -43,61 +43,66 @@
         <thead>
         <tr>
             <th>No</th>
-            <th>ID</th>
-            <th>CustomerType Id</th>
+            <th>Id</th>
             <th>Name</th>
             <th>Birthday</th>
-            <th>Gender</th>
             <th>ID Card</th>
-            <th>Phone</th>
+            <th>Salary</th>
+            <th>Phone Number</th>
             <th>Email</th>
+            <th>Division</th>
             <th>Address</th>
-            <th>Action</th>
+            <th>Position</th>
+            <th>Education Degree</th>
+
         </tr>
         </thead>
         <tbody>
-
-        <tr th:each="cus,rowstat : ${customerList}">
+        
+        <tr th:each="employee,rowstat : ${employeeList}">
             <td th:text="${rowstat.count}"></td>
-            <td th:text="${cus.id}"></td>
-            <td th:text="${cus.customerType.customerTypeName}"></td>
-            <td th:text="${cus.name}"></td>
-            <td th:text="${cus.birthday}"></td>
-            <td th:if="${cus.gender==1}">Male</td>
-            <td th:if="${cus.gender==0}">FeMale</td>
-            <td th:text="${cus.idCard}"></td>
-            <td th:text="${cus.phoneNumber}"></td>
-            <td th:text="${cus.email}"></td>
-            <td th:text="${cus.address}"></td>
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.birthday}"></td>
+            <td th:text="${employee.idCard}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td th:text="${employee.phoneNumber}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.division.name}"></td>
+            <td th:text="${employee.address}"></td>
+            <td th:text="${employee.position.positionName}"></td>
+            <td th:text="${employee.educationDegree.name}"></td>
+            <td th:text="${employee.user.userName}"></td>
 
             <td>
-                <a th:href="@{/view(id=${cus.id})}">
+                <a th:href="@{/view(id=${employee.id})}">
                     <button class="btn btn-info btn-sm">
                         <i class="fas fa-eye"></i>
                     </button>
                 </a>
-                <a th:href="@{/customer/edit_customer(id=${cus.id})}">
-                    <button class="btn btn-warning btn-sm" th:value="${cus.id}">
+                <a th:href="@{/employee/edit_employee(id=${employee.id})}">
+                    <button class="btn btn-warning btn-sm" th:value="${employee.id}">
                         <i class="fas fa-edit"></i>
                     </button>
                 </a>
 
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"
-                        onclick="customerSetId('${cus.customerId}')">
+                        onclick="employeeSetId('${employee.id}')">
                     <i class="fas fa-ban"></i></button>
 
             </td>
         </tr>
 
+
         </tbody>
     </table>
-    <button id="btnMore" name="loadMore"></button>
+
 
     <div>
-        <a th:href="@{'/customer/list_customer'(page=${customerList.number - 1})}"
-           th:if="${customerList.hasPrevious()}">Previous</a>
-        <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
-        <a th:href="@{'/customer/list_customer'(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}">Next</a>
+        <a th:href="@{'/employee/list_employee'(page=${employeeList.number - 1})}"
+           th:if="${employeeList.hasPrevious()}">Previous</a>
+        <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>
+        <a th:href="@{'/employee/list_employee'(page=${employeeList.number + 1})}" th:if="${employeeList.hasNext()}">Next</a>
     </div>
 </div>
 
@@ -149,11 +154,11 @@
             </div>
         </div>
     </div>
-    <form th:action="@{/customer/delete_employee}" method="post" id="idForm">
+    <form th:action="@{/employee/delete_employee}" method="post" id="idForm">
         <input type="hidden" name="id" id="idDeleted">
     </form>
     <script>
-        function customerSetId(id) {
+        function employeeSetId(id) {
             document.getElementById("idDeleted").value = id;
         }
 

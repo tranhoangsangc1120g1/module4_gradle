@@ -1,101 +1,100 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "customer")
 @Table
 public class Customer {
     @Id
-    @Column(name = "customer_id",nullable = false)
-    private  String customerId;
+    @Column(name = "customer_id", nullable = false, length = 45)
+    private String id;
 
 
-    @Column(name = "customer_name" ,nullable = false)
-    private String customerName;
-    @Column(name = "customer_birthday" ,nullable = false)
-    private String customerBirthday;
-    @Column(name = "customer_gender" ,nullable = false)
-    private  int customerGender;
-    @Column(name = "customer_id_card" ,nullable = false)
-    private String customerIdCard;
-    @Column(name = "customer_phone" ,nullable = false)
-    private String customerPhone;
-    @Column(name = "customer_email" ,nullable = false)
-    private String customerEmail;
-    @Column(name = "customer_address" ,nullable = false)
-    private String customerAddress;
-
-//    foreign key(customer_type_id) references customer_type(customer_type_id) on update cascade on delete cascade,
+    @Column(name = "customer_name", nullable = false, length = 45)
+    private String name;
+    @Column(name = "customer_birthday", nullable = false, length = 45)
+    private String birthday;
+    @Column(name = "customer_gender", nullable = false)
+    private int gender;
+    @Column(name = "customer_id_card", nullable = false, length = 45)
+    private String idCard;
+    @Column(name = "customer_phone", nullable = false, length = 45)
+    private String phoneNumber;
+    @Column(name = "customer_email", nullable = false, length = 45)
+    private String email;
+    @Column(name = "customer_address", nullable = false, length = 45)
+    private String address;
 
     @ManyToOne
-    @JoinColumn(name = "customer_type_id",referencedColumnName ="customer_type_id",nullable = false)
+    @JoinColumn(name = "customer_type_id", referencedColumnName = "customer_type_id", nullable = false)
     private CustomerType customerType;
 
-    public Customer() {
+    @OneToMany(mappedBy ="customer",cascade = CascadeType.ALL)
+    List<Contract> contractList;
+
+    public String getId() {
+        return id;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setCustomerId(String customer_id) {
-        this.customerId = customer_id;
+    public String getName() {
+        return name;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCustomerName(String customer_name) {
-        this.customerName = customer_name;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public String getCustomerBirthday() {
-        return customerBirthday;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public void setCustomerBirthday(String customer_birthday) {
-        this.customerBirthday = customer_birthday;
+    public int getGender() {
+        return gender;
     }
 
-    public int getCustomerGender() {
-        return customerGender;
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
-    public void setCustomerGender(int customer_gender) {
-        this.customerGender = customer_gender;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public String getCustomerIdCard() {
-        return customerIdCard;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public void setCustomerIdCard(String customer_id_card) {
-        this.customerIdCard = customer_id_card;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setCustomerPhone(String customer_phone) {
-        this.customerPhone = customer_phone;
+    public String getEmail() {
+        return email;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setCustomerEmail(String customer_email) {
-        this.customerEmail = customer_email;
+    public String getAddress() {
+        return address;
     }
 
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customer_address) {
-        this.customerAddress = customer_address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public CustomerType getCustomerType() {
@@ -105,4 +104,14 @@ public class Customer {
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
+
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
+    }
+
 }
+
